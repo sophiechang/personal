@@ -4,6 +4,8 @@ from django.http import HttpResponse, HttpResponseRedirect
 from django import forms
 from django.forms.widgets import *
 from django.core.mail import send_mail, BadHeaderError
+from django.core.paginator import Paginator, InvalidPage, EmptyPage
+from django.core.urlresolvers import reverse
 
 from content.models import *
 
@@ -15,10 +17,19 @@ def home(request):
     return render_to_response('index.html', dict, context_instance=RequestContext(request))
 
 def blog(request):
-    dict = {}
-    dict['posts'] = Post.objects.all()
-    dict['tags'] = Tag.objects.all()
-    return render_to_response('blog.html', dict, context_instance=RequestContext(request))
+    tags = Tag.objects.all().order_by("title")
+    posts = Post.objects.all().order_by("-pub_date")
+    paginator = Paginator(posts, 2)
+
+    try: page = int(request.GET.get("page", '1'))
+    except ValueError: page = 1
+
+    try:
+        posts = paginator.page(page)
+    except (InvalidPage, EmptyPage):
+        posts = paginator.page(paginator.num_pages)
+
+    return render_to_response("blog.html", dict(posts=posts, tags=tags), context_instance=RequestContext(request))
 
 def view_post(request, slug):
 	dict = {}
@@ -27,10 +38,22 @@ def view_post(request, slug):
 
 def view_tag(request, slug):
 	dict = {}
+
 	tag = get_object_or_404(Tag, slug=slug)
 	dict['tag'] = tag
-	dict['posts'] = Post.objects.filter(tag=tag)
-	dict['tags'] = Tag.objects.all()
+	dict['tags'] = Tag.objects.all().order_by("title")
+
+	posts = Post.objects.filter(tag=tag).order_by("-pub_date")
+	paginator = Paginator(posts, 2)
+	
+	try: page = int(request.GET.get("page", '1'))
+	except ValueError: page = 1
+	try:
+	    posts = paginator.page(page)
+	except (InvalidPage, EmptyPage):
+	    posts = paginator.page(paginator.num_pages)
+
+	dict['posts'] = posts
 	return render_to_response('view_tag.html', dict, context_instance=RequestContext(request))
 
 def contact(request):

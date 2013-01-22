@@ -7,9 +7,10 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     url(r'^$', 'content.views.home', name='home'),
-    url(r'^blog/$', 'content.views.blog', name='blog'),
     url(r'^blog/view/(?P<slug>[^\.]+)/$', 'content.views.view_post', name='view_post'),
     url(r'^blog/tag/(?P<slug>[^\.]+)/$', 'content.views.view_tag', name='view_tag'),
+    url(r'^blog/$', 'content.views.blog', name='blog'),
+    url(r'^blog?page', 'content.views.blog', name='blogpage'),
     url(r'^contact/$', 'content.views.contact', name='contact'),
     url(r'^contact/thankyou/$', 'content.views.thankyou', name='thankyou'),
     url(r'^projects/$', 'content.views.projects', name='projects'),

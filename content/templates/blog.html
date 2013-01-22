@@ -26,13 +26,23 @@
 	<div class="excerpt">{{ post.teaser }}</div>
 	<a href="{{ post.get_absolute_url }}" class="read-more">continue &#8594;</a>
 	<div class="meta">
-		<div class="tags">Tagged under: <a href="{{ post.tag.absolute_url }}">{{ post.tag }}</a></div>
+		<div class="tags">Tagged under: <a href="{{ post.tag.get_absolute_url }}">{{ post.tag }}</a></div>
 	</div>
 </article>
 {% endfor %}
 </div>
-{% else %}
-<p>There are no posts </p>
+{% endif %}
+{% if posts and posts.paginator.num_pages > 1 %}
+<div class="pagination" style="margin-top: 20px;">
+	<span class="step-links">
+	{% if posts.has_previous %}
+		<a href="?page={{ posts.previous_page_number }}">newer posts</a>
+	{% endif %}
+	{% if posts.has_next %}
+		<p class="pull-right"><a href="?page={{ posts.next_page_number }}">older posts</a></p>
+	{% endif %}
+	</span>
+</div>
 {% endif %}
 </div>
 <div class="span4">

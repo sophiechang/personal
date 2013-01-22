@@ -1,0 +1,91 @@
+#posts-list .page-heading,
+.fullwidth-content .page-heading,
+.floated-content .page-heading{
+	margin-bottom: 35px;
+}
+
+#posts-list .entry-date{
+	position: absolute;
+	top: 0px;
+	left: 23px;
+	width: 97px;
+	height: 97px;
+	background: url(../img/date.png) no-repeat;
+	font-family: "News Cycle","Arial Narrow Bold",sans-serif;
+	color: white;
+}
+
+#posts-list .entry-date .number{
+	font-size: 50px;
+	padding-top: 25px;
+	text-align: center;
+}
+
+#posts-list .entry-date .year{
+	text-align: center;
+	padding-top: 10px;
+}
+
+
+#posts-list article{
+	position: relative;
+	padding-left: 160px;
+	margin-bottom: 40px;
+}
+
+#posts-list .feature-image,
+#post-content .feature-image{
+	width: 540px;
+	margin-bottom: 21px;
+	line-height: 0em;
+	
+	-webkit-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
+	-moz-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
+	-o-box-shadow: 2px 2px 0px rgba(0,0,0,.2);
+	box-shadow: 2px 2px 0px rgba(0,0,0,.2);
+}
+
+#posts-list .feature-image img,
+#post-content .feature-image img{
+	max-width: 100%;
+	-webkit-transition: all 0.3s ease;
+	-moz-transition: all 0.3s ease;
+	-o-transition: all 0.3s ease;
+	transition: all 0.3s ease;
+}
+
+#posts-list .feature-image:hover img,
+#posts-content .feature-image:hover img{
+	opacity: 0.2;
+}
+
+#posts-list .post-heading{
+	margin-bottom: 20px;
+	line-height: 1.0em;
+}
+
+#posts-list .excerpt,
+#posts-list .read-more{
+	display: block;
+	margin-bottom: 20px;
+}
+
+#posts-list .meta div{
+	padding: 15px 10px 15px 30px;
+	float: left;
+	max-width: 170px;
+}
+
+article .meta{
+	border-top: 1px solid #cecece;
+	border-bottom: 1px solid #cecece;
+	overflow: hidden;
+}
+
+article .meta .tags{
+	background: url(../img/icon-tags.png) no-repeat;
+}
+
+article .meta .tags{
+	background-position: 5px 12px;	
+}

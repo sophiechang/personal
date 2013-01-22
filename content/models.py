@@ -21,22 +21,6 @@ class Post(models.Model):
     @permalink
     def get_absolute_url(self):
         return ('view_post', None, {'slug': self.slug})
-        
-    def save(self, *args, **kwargs):
-        '''
-        Retrieve an image from some url and save it to the image field,
-        before saving the model to the database
-        '''
-        image_url = "http://.../image.jpg" # get this url from somewhere
-        image_data = urllib2.urlopen(image_url, timeout=5)
-        filename = urlparse.urlparse(image_data.geturl()).path.split('/')[-1]
-        self.image = filename
-        self.image.save(
-            filename,
-            ContentFile(image_data.read()),
-            save=False
-        )
-        super(YourModel, self).save(*args, **kwargs)
 
 class Image(models.Model):
 	post = models.ForeignKey(Post, related_name="images")

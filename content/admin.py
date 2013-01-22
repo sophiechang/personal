@@ -1,4 +1,13 @@
-from content.models import Post
+from content.models import *
 from django.contrib import admin
 
-admin.site.register(Post)
+class PostAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+    
+class TagAdmin(admin.ModelAdmin):
+    prepopulated_fields = {'slug': ('title',)}
+
+admin.site.register(Image)
+admin.site.register(Post, PostAdmin)
+admin.site.register(Tag, TagAdmin)
+admin.site.register(Project)

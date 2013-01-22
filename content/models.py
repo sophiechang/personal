@@ -1,10 +1,75 @@
 from django.db import models
+from django.db.models import permalink
+import urllib2, urlparse
+from django.core.files.base import ContentFile
+
+def get_image_path(instance, filename):
+    return os.path.join('img', str(instance.category), filename)
 
 # Create your models here.
 class Post(models.Model):
     title = models.CharField(max_length=50)
     teaser = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=100, db_index=True)
     pub_date = models.DateTimeField(auto_now_add=True)
+    text = models.TextField()
+    tag = models.ForeignKey('content.Tag')
     
     def __unicode__(self):
         return self.title
+        
+    @permalink
+    def get_absolute_url(self):
+        return ('view_post', None, {'slug': self.slug})
+        
+    def save(self, *args, **kwargs):
+        '''
+        Retrieve an image from some url and save it to the image field,
+        before saving the model to the database
+        '''
+        image_url = "http://.../image.jpg" # get this url from somewhere
+        image_data = urllib2.urlopen(image_url, timeout=5)
+        filename = urlparse.urlparse(image_data.geturl()).path.split('/')[-1]
+        self.image = filename
+        self.image.save(
+            filename,
+            ContentFile(image_data.read()),
+            save=False
+        )
+        super(YourModel, self).save(*args, **kwargs)
+
+class Image(models.Model):
+	post = models.ForeignKey(Post, related_name="images")
+	image_path = models.ImageField(upload_to="images/%Y/%m/%d")
+	url = models.CharField(max_length=150, blank=True)
+	
+	timestamp = models.DateTimeField(auto_now_add=True)
+	
+	def __unicode__(self):
+		if self.pk is not None:
+			return "{{ %d }}" % self.pk
+		else:
+			return "deleted image"
+
+class Tag(models.Model):
+    title = models.CharField(max_length=100, db_index=True)
+    slug = models.SlugField(max_length=100, db_index=True)
+    
+    def __unicode__(self):
+        return self.title
+        
+    @permalink
+    def get_absolute_url(self):
+        return ('view_tag', None, {'slug': self.slug})
+
+class Project(models.Model):
+    title = models.CharField(max_length=50)
+    link = models.URLField(max_length=200)
+    pic = models.ImageField(upload_to=get_image_path)
+    
+    def __unicode__(self):
+    	return self.title
+    	
+    @permalink
+    def get_absolute_url(self):
+    	return ('view_project', None, {'slug': self.title})

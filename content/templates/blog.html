@@ -15,7 +15,7 @@
 	</div>
 	{% if post.pic %}
 	<div class="feature-image">
-		<img src="{{ post.pic }}" alt="Alt text" />
+		<img src="{{ post.pic }}" alt="{{ post.pic.caption }}" />
 	</div>
 	{% endif %}
 	<h2  class="post-heading"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>

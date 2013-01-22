@@ -50,7 +50,7 @@ class Tag(models.Model):
         return ('view_tag', None, {'slug': self.slug})
         
 class ContactForm(forms.Form):
-    sender = forms.EmailField()
+    name = forms.EmailField()
     subject = forms.CharField(max_length=100)
     message = forms.CharField(widget=forms.Textarea)
 

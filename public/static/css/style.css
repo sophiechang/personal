@@ -82,7 +82,7 @@ article .meta{
 	overflow: hidden;
 }
 
-article .meta .tags, {
+article .meta .tags {
 	background: url(../img/icon-tags.png) no-repeat;
 }
 
@@ -100,4 +100,9 @@ article .meta .tags{
 
 #contactform input[type="submit"] {
 	font-family: "News Cycle","Arial Narrow Bold",sans-serif;
+}
+
+#contactinfo iframe {
+	width: 100%;
+	height: 230px;
 }

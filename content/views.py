@@ -27,7 +27,10 @@ def view_post(request, slug):
 
 def view_tag(request, slug):
 	dict = {}
-	dict['tag'] = get_object_or_404(Tag, slug=slug)
+	tag = get_object_or_404(Tag, slug=slug)
+	dict['tag'] = tag
+	dict['posts'] = Post.objects.filter(tag=tag)
+	dict['tags'] = Tag.objects.all()
 	return render_to_response('view_tag.html', dict, context_instance=RequestContext(request))
 
 def contact(request):

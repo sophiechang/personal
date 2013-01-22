@@ -1,3 +1,7 @@
-{% extends "base.html" %}
-{% block body %}
+{% extends "blog.html" %}
+{% block title %} - Viewing {{ tag.title }}{% endblock %}
+{% block header %}
+<div class="page-header">
+	<h1>{{ tag.title }} tag archive</h1>
+</div>
 {% endblock %}

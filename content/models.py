@@ -2,6 +2,9 @@ from django.db import models
 from django.db.models import permalink
 import urllib2, urlparse
 from django.core.files.base import ContentFile
+from django import forms
+from django.forms.widgets import *
+from django.core.mail import send_mail, BadHeaderError
 
 def get_image_path(instance, filename):
     return os.path.join('img', str(instance.category), filename)
@@ -45,6 +48,11 @@ class Tag(models.Model):
     @permalink
     def get_absolute_url(self):
         return ('view_tag', None, {'slug': self.slug})
+        
+class ContactForm(forms.Form):
+    sender = forms.EmailField()
+    subject = forms.CharField(max_length=100)
+    message = forms.CharField(widget=forms.Textarea)
 
 class Project(models.Model):
     title = models.CharField(max_length=50)

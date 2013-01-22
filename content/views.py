@@ -1,5 +1,9 @@
-from django.shortcuts import render_to_response, get_object_or_404
-from django.template import RequestContext
+from django.shortcuts import render, render_to_response, get_object_or_404
+from django.template import RequestContext, Context
+from django.http import HttpResponse, HttpResponseRedirect
+from django import forms
+from django.forms.widgets import *
+from django.core.mail import send_mail, BadHeaderError
 
 from content.models import *
 
@@ -27,8 +31,24 @@ def view_tag(request, slug):
 	return render_to_response('view_tag.html', dict, context_instance=RequestContext(request))
 
 def contact(request):
-    dict = {}
-    return render_to_response('contact.html', dict, context_instance=RequestContext(request))
+    form = ContactForm()
+    if request.method == 'POST': # If the form has been submitted...
+        form = ContactForm(request.POST) # A form bound to the POST data
+        if form.is_valid():
+    		subject = form.cleaned_data['subject']
+    		message = form.cleaned_data['message']
+    		sender = form.cleaned_data['sender']
+
+    		recipients = ['sophiechanga@gmail.com']
+    		send_mail(subject, message, sender, recipients)
+    		return HttpResponseRedirect('/dev/contact/thankyou/') # Redirect after POST
+
+    return render(request, 'contact.html', {
+        'form': form,
+    })
+
+def thankyou(request):
+	return render_to_response('thankyou.html', context_instance=RequestContext(request))
 
 def projects(request):
     dict = {}

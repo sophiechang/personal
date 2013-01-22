@@ -82,10 +82,22 @@ article .meta{
 	overflow: hidden;
 }
 
-article .meta .tags{
+article .meta .tags, {
 	background: url(../img/icon-tags.png) no-repeat;
 }
 
 article .meta .tags{
 	background-position: 5px 12px;	
+}
+
+#contactform textarea, #contactform input[type="text"] {
+	width: 90%;
+}
+
+#contactform textarea {
+	height: 230px;
+}
+
+#contactform input[type="submit"] {
+	font-family: "News Cycle","Arial Narrow Bold",sans-serif;
 }

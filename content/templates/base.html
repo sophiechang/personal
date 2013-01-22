@@ -27,10 +27,6 @@
           				<li><a href="/dev/projects">Projects</a></li>
           				<li><a href="{{ STATIC_URL }}pdf/SophieChang.pdf">Resume</a></li>
         			</ul>
-        			<ul class="nav pull-right" id="main-menu-right">
-          				<li><a rel="tooltip" target="_blank" href="http://facebook.com/sophie.chang" title="Facebook">Facebook</a></li>
-          				<li><a rel="tooltip" target="_blank" href="http://linkedin.com/in/sophchang" title="LinkedIn">LinkedIn</a></li>
-        			</ul>
       		 	</div>
     	 	</div>
    		</div>
@@ -39,7 +35,10 @@
     {% block body %}{% endblock %}
     <hr>
     <footer id="footer">
-        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p class="pull-right">
+        	<a href="http://linkedin.com/in/sophchang"><img src="{{ STATIC_URL }}img/linkedin.png" /></a>
+        	<a href="http://facebook.com/sophie.chang"><img src="{{ STATIC_URL }}img/facebook.png" /></a>
+        </p>
         <div class="links">
         	<a href="/dev/">Home</a>
           	<a href="/dev/about">About</a>

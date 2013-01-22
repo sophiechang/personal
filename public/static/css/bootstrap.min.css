@@ -1,5 +1,6 @@
 @import url('//fonts.googleapis.com/css?family=News+Cycle:400,700');
 article,aside,details,figcaption,figure,footer,header,hgroup,nav,section{display:block;}
+footer{margin-bottom: 20px;}
 audio,canvas,video{display:inline-block;*display:inline;*zoom:1;}
 audio:not([controls]){display:none;}
 html{font-size:100%;-webkit-text-size-adjust:100%;-ms-text-size-adjust:100%;}
@@ -858,7 +859,7 @@ h2{font-size:36px;}
 h3{font-size:28px;}
 h4{font-size:20px;}
 h5{font-size:13px;}
-p>a,address>a,.breadcrumb a,abbr[title]{text-decoration:none;border-bottom:1px dotted;}p>a:hover,address>a:hover,.breadcrumb a:hover,abbr[title]:hover{text-decoration:none;border-bottom:1px solid;}
+p>a,address>a,.breadcrumb a,abbr[title]{text-decoration:none;}p>a:hover,address>a:hover,.breadcrumb a:hover,abbr[title]:hover{text-decoration:none;}
 code,pre{-webkit-border-radius:0;-moz-border-radius:0;border-radius:0;background-color:#eeeeee;-webkit-box-shadow:none;-moz-box-shadow:none;box-shadow:none;}
 .page-header{border-bottom:2px solid #eeeeee;}
 hr{border-bottom:1px solid #eeeeee;}

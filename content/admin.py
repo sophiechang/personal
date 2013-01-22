@@ -1,4 +1,4 @@
-from content.models import *
+from content.models import Image, Post, Tag, Project
 from django.contrib import admin
 
 class PostAdmin(admin.ModelAdmin):

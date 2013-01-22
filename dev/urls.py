@@ -11,6 +11,7 @@ urlpatterns = patterns('',
     url(r'^blog/view/(?P<slug>[^\.]+)/$', 'content.views.view_post', name='view_post'),
     url(r'^blog/tag/(?P<slug>[^\.]+)/$', 'content.views.view_tag', name='view_tag'),
     url(r'^contact/$', 'content.views.contact', name='contact'),
+    url(r'^contact/thankyou/$', 'content.views.thankyou', name='thankyou'),
     url(r'^projects/$', 'content.views.projects', name='projects'),
     url(r'^admin/', include(admin.site.urls)),
 )

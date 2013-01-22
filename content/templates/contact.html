@@ -1,7 +1,20 @@
 {% extends "base.html" %}
 {% block title %} - Contact{% endblock %}
+{% block css %}<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">{% endblock %}
 {% block body %}
 <div class="page-header">
 	<h1>Contact</h1>
+</div>
+<div class="row">
+	<div class="span8">
+		<form id="contactform" action="/dev/contact/" method="post">{% csrf_token %}
+			{{ form.as_p }}
+			<input type="submit" value="Submit" />
+		</form>
+	</div>
+	<div class="span4">
+		<h4>Sophie Chang</h4>
+		<p>sophiechanga@gmail.com</p>
+	</div>
 </div>
 {% endblock %}

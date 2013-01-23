@@ -1,0 +1,6 @@
+TODO
+
+- home page
+- projects page
+- ability to upload and add photos
+- html resume

@@ -132,7 +132,11 @@ INSTALLED_APPS = (
     'django.contrib.flatpages',
     'django.contrib.admin',
     'content',
+    'disqus',
 )
+
+DISQUS_API_KEY = '042FM6R0SsreGZQm4sxvcaTrMKzKZ7XZXGZZPQ0OL4F4tIX54QVgED65BkaVfZcE'
+DISQUS_WEBSITE_SHORTNAME = 'sophiechang'
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

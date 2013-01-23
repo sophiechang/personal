@@ -17,6 +17,7 @@ class Post(models.Model):
     pub_date = models.DateTimeField(auto_now_add=True)
     text = models.TextField()
     tag = models.ForeignKey('content.Tag')
+    author = models.CharField(max_length=50)
     
     def __unicode__(self):
         return self.title

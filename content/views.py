@@ -19,7 +19,7 @@ def home(request):
 def blog(request):
     tags = Tag.objects.all().order_by("title")
     posts = Post.objects.all().order_by("-pub_date")
-    paginator = Paginator(posts, 2)
+    paginator = Paginator(posts, 5)
 
     try: page = int(request.GET.get("page", '1'))
     except ValueError: page = 1
@@ -44,7 +44,7 @@ def view_tag(request, slug):
 	dict['tags'] = Tag.objects.all().order_by("title")
 
 	posts = Post.objects.filter(tag=tag).order_by("-pub_date")
-	paginator = Paginator(posts, 2)
+	paginator = Paginator(posts, 5)
 	
 	try: page = int(request.GET.get("page", '1'))
 	except ValueError: page = 1

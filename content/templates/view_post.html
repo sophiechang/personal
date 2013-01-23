@@ -1,3 +1,29 @@
 {% extends "base.html" %}
+{% block css %}<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">{% endblock %}
+{% load disqus_tags %}
 {% block body %}
+<div id="posts-list" class="single-post">
+					
+<article class="format-standard">
+	<div class="entry-date">
+		<div class="number">{{ post.pub_date|date:'d' }}</div>
+		<div class="year">{{ post.pub_date|date:"M, Y" }}</div>
+	</div>
+	{% if post.pic %}
+	<div class="feature-image">
+		<img src="{{ post.pic }}" alt="{{ post.pic.caption }}" />
+	</div>
+	{% endif %}
+	<h2  class="post-heading"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h2>
+	<div class="excerpt">{{ post.teaser }}</div>
+	<a href="{{ post.get_absolute_url }}" class="read-more">continue &#8594;</a>
+	<div class="meta">
+		<div class="tags">Tagged under: <a href="{{ post.tag.get_absolute_url }}">{{ post.tag }}</a></div>
+		<div class="comments"><a href="{{ post.get_absolute_url }}#disqus_thread" data-disqus-identifier="post_{{ post.id }}">View Comments</a></div>
+		<div class="author">By: {{ post.author }}</div>
+	</div>	
+{% disqus_show_comments %}
+</article>
+</div>
+{% set_disqus_identifier "post_" post.id %}
 {% endblock %}

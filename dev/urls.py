@@ -5,8 +5,12 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    url(r'^$', 'content.views.home', name='home'),
+urlpatterns = patterns('django.contrib.flatpages.views',
+    url(r'^about/$', 'flatpage', {'url': '/about/'}, name='about'),
+)
+
+urlpatterns += patterns('',
+    url(r'^$', 'content.views.home', name='index'),
     url(r'^blog/view/(?P<slug>[^\.]+)/$', 'content.views.view_post', name='view_post'),
     url(r'^blog/tag/(?P<slug>[^\.]+)/$', 'content.views.view_tag', name='view_tag'),
     url(r'^blog/$', 'content.views.blog', name='blog'),
@@ -14,11 +18,9 @@ urlpatterns = patterns('',
     url(r'^contact/$', 'content.views.contact', name='contact'),
     url(r'^contact/thankyou/$', 'content.views.thankyou', name='thankyou'),
     url(r'^projects/$', 'content.views.projects', name='projects'),
+    url(r'^photospheres/view/(?P<slug>[^\.]+)/$', 'content.views.view_photo', name='view_photo'),
+    url(r'^photospheres/$', 'content.views.photospheres', name='photospheres'),
     url(r'^admin/', include(admin.site.urls)),
-)
-
-urlpatterns += patterns('django.contrib.flatpages.views',
-    url(r'^about/$', 'flatpage', {'url': '/about/'}, name='about'),
 )
 
 if settings.DEBUG:

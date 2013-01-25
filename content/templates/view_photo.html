@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block css %}<link href="{{ STATIC_URL }}css/style.css" rel="stylesheet">{% endblock %}
+{% load disqus_tags %}
+{% block body %}
+<div id="posts-list" class="single-post">
+					
+<article class="format-standard">
+	<div class="entry-date">
+		<div class="number">{{ photosphere.pub_date|date:'d' }}</div>
+		<div class="year">{{ photosphere.pub_date|date:"M, Y" }}</div>
+	</div>
+	<div id="photosphere" style="width:100%; height:300px;">
+	</div>
+	<h2  class="post-heading"><a href="{{ photosphere.get_absolute_url }}">{{ photosphere.title }}</a></h2>
+	<div class="meta">
+		<div class="tags">{% if photosphere.tags %}Tagged under {% for t in photosphere.tags.all %}<a href="{{ t.get_absolute_url }}">{{ t.title }}. </a>{% endfor %}{% endif %}</div>
+		<div class="comments"><a href="{{ photosphere.get_absolute_url }}#disqus_thread" data-disqus-identifier="post_{{ photosphere.id }}">View Comments</a></div>
+		<div class="author">Taken by {{ photosphere.author }}</div>
+	</div>	
+{% disqus_show_comments %}
+</article>
+</div>
+{% set_disqus_identifier "post_" photosphere.id %}
+{% endblock %}
+{% block mediaJS %}
+	<script src="{{ STATIC_URL }}js/three.min.js"></script>
+	<script src="{{ STATIC_URL }}js/sphere.js"></script>
+	<script>
+        new Photosphere("{{ STATIC_URL }}{{ photosphere.url }}").loadPhotosphere(document.getElementById("photosphere"));
+    </script>
+{% endblock %}

@@ -12,8 +12,7 @@ from content.models import *
 # Create your views here.
 def home(request):
     dict = {}
-    dict['posts'] = Post.objects.all()[:3]
-    dict['projects'] = Project.objects.all()[:5]
+    dict['photosphere'] = Photosphere.objects.latest('pub_date')
     return render_to_response('index.html', dict, context_instance=RequestContext(request))
 
 def blog(request):
@@ -42,18 +41,7 @@ def view_tag(request, slug):
 	tag = get_object_or_404(Tag, slug=slug)
 	dict['tag'] = tag
 	dict['tags'] = Tag.objects.all().order_by("title")
-
-	posts = Post.objects.filter(tag=tag).order_by("-pub_date")
-	paginator = Paginator(posts, 5)
-	
-	try: page = int(request.GET.get("page", '1'))
-	except ValueError: page = 1
-	try:
-	    posts = paginator.page(page)
-	except (InvalidPage, EmptyPage):
-	    posts = paginator.page(paginator.num_pages)
-
-	dict['posts'] = posts
+ 	dict['photospheres'] = Photosphere.objects.filter(tag=tag).order_by('-pub_date')
 	return render_to_response('view_tag.html', dict, context_instance=RequestContext(request))
 
 def contact(request):
@@ -80,3 +68,14 @@ def projects(request):
     dict = {}
     dict['projects'] = Project.objects.all()
     return render_to_response('projects.html', dict, context_instance=RequestContext(request))
+
+def photospheres(request):
+    dict = {}
+    dict['photospheres'] = Photosphere.objects.all().order_by('-pub_date')
+    dict['tags'] = Tag.objects.all().order_by('title')
+    return render_to_response('photospheres.html', dict, context_instance=RequestContext(request))
+
+def view_photo(request, slug):
+    dict = {}
+    dict['photosphere'] = get_object_or_404(Photosphere, slug=slug)
+    return render_to_response('view_photo.html', dict, context_instance=RequestContext(request))

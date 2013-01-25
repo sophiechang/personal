@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block header %}
+<div class="page-header">
+	<h4>Most Recent Photosphere</h4>
+	<h6>{{ flatpage.title }}</h6>
+</div>
+{% endblock %}
+{% block body %}
+<div class="row">
+<div class="span12">
+<div id="photosphere" style="width:100%; height:300px;">
+</div>
+</div>
+</div>
+{% endblock %}
+{% block mediaJS %}
+	<script src="{{ STATIC_URL }}js/three.min.js"></script>
+	<script src="{{ STATIC_URL }}js/sphere.js"></script>
+	<script>
+        new Photosphere("{{ STATIC_URL }}{{ flatpage.content }}").loadPhotosphere(document.getElementById("photosphere"));
+    </script>
+{% endblock %}

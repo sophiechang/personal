@@ -37,11 +37,10 @@ def view_post(request, slug):
 
 def view_tag(request, slug):
 	dict = {}
-
 	tag = get_object_or_404(Tag, slug=slug)
 	dict['tag'] = tag
 	dict['tags'] = Tag.objects.all().order_by("title")
- 	dict['photospheres'] = Photosphere.objects.filter(tag=tag).order_by('-pub_date')
+	dict['photospheres'] = Photosphere.objects.filter(tags__title=tag.title).order_by('-pub_date')
 	return render_to_response('view_tag.html', dict, context_instance=RequestContext(request))
 
 def contact(request):

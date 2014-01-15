@@ -6,7 +6,8 @@
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/bootswatch.css" rel="stylesheet">
-    {% block css %}{% endblock %}
+    {% block css %}
+    {% endblock %}
   </head>
   <body class="preview" data-spy="scroll" data-target=".subnav" data-offset="80">
     <div class="navbar navbar-inverse">
@@ -23,7 +24,7 @@
           				<li><a href="http://sophie-chang.com/about">About</a></li>
           				<li><a href="http://sophie-chang.com/contact">Contact</a></li>
           				<li><a href="http://sophie-chang.com/photospheres">Photospheres</a></li>
-          				<li><a href="{{ STATIC_URL }}pdf/SophieChang.pdf">Resume</a></li>
+          				<li><a href="http://sophie-chang.com/resume">Resume</a></li>
         			</ul>
       		 	</div>
     	 	</div>
@@ -37,13 +38,12 @@
         <p class="pull-right">
         	<a href="http://linkedin.com/in/sophchang"><img src="{{ STATIC_URL }}img/linkedin.png" /></a>
         	<a href="http://github.com/sophiechang"><img src="{{ STATIC_URL }}img/github.png" /></a>
-        	<a href="http://facebook.com/sophie.chang"><img src="{{ STATIC_URL }}img/facebook.png" /></a>
         </p>
         <div class="links">
           	<a href="http://sophie-chang.com/about">About</a>
           	<a href="http://sophie-chang.com/contact">Contact</a>
           	<a href="http://sophie-chang.com/photospheres">Photospheres</a>
-          	<a href="{{ STATIC_URL }}pdf/SophieChang.pdf">Resume</a>
+          	<a href="http://sophie-chang.com/resume">Resume</a>
         </div>
         &copy; Sophie Chang 2013
     </footer>

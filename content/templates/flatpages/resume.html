@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% block title %}{% endblock %}
+{% block css %}
+{{ block.super }}
+<link href="{{ STATIC_URL }}css/resume.css" rel="stylesheet">
+{% endblock %}
+{% block header %}
+<div class="page-header">
+	<h1>{{ flatpage.title }}</h1>
+</div>
+{% endblock %}
+{% block body %}
+<div class="row">
+	<div class="span12">
+	    <div id="resume-header">
+          <h2>Sophie Chang</h2>
+          <address id="contact">
+          <span><a href="{{ STATIC_URL }}pdf/SophieChang.pdf">[PDF]</a><br />
+          <span>Brooklyn, NY</span><br />
+          <span><a href="mailto:sophie@sophie-chang.com">sophie@sophie-chang.com</a></span><br />
+          <span>(646) 531-4890</span>
+          </address>
+        </div>
+        <div class="section education">
+          <a name="education"></a>
+          <h1>Education</h1>
+
+          <div class="content">
+            <h2>Harvard University <em>2009-2013, Cambridge, MA</em></h2>
+            <ul class="details">
+              <li>A.B. Computer Science with Honors</li>
+              <li>Secondary Field, Mathematical Sciences</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section work-experience">
+          <a name="work-experience"></a>
+          <h1>Work Experience</h1>
+
+          <div class="content">
+            <h2>Google <em>Software Engineer, 2013 - present, New York, NY</em></h2>
+            <ul class="details">
+            <li>Developer on confidential internal Hangouts-related project</li>
+            </ul>
+            <h2>Harvard University <em>Teaching Fellow, 2010 - present, Cambridge, MA</em></h2>
+            <ul class="details">
+              <li>Instructed students in computer science courses covering basic C and Java programming and mobile operating systems and applications (iOS, Android, and Windows Phone)</li>
+              <li>Synthesized complex course material and presented weekly supplemental lessons</li>
+              <li>Graded quizzes and problem sets for classes of 500+ students</li>
+            </ul>
+            <h2>Google <em>Software Engineering Intern, Summer 2012, London, UK</em></h2>
+            <ul class="details">
+              <li>Interned on the Android Voice Search team</li>
+              <li>Integrated Android Voice Search into devices, promoting search functionality</li>
+              <li>Optimized speech recognition service to improve accuracy of word identification</li>
+            </ul>
+
+            <h2>Harvard Student Agencies <em>Senior Developer - Android, 2011 - 2012, Cambridge, MA</em></h2>
+            <ul class="details">
+              <li>Led Android team as main developer for all Android projects</li>
+              <li>Designed full-scale projects and communication infrastructure</li>
+              <li>Supervised Android team members and increased efficiency by 25%</li>
+            </ul>
+
+            <h2>Mobile Interactive Group <em>Software Engineering Intern, Summer 2011, London, UK</em></h2>
+            <ul class="details">
+              <li>Collaborated with team to implement Android applications for Vodafone (myVodafone), O2 (myO2), and Moneysupermarket.com</li>
+              <li>Implemented home screen widgets for the Sony PlayStation Europe Android application</li>
+              <li>Prepared research briefs on new mobile technologies and Android developments</li>
+            </ul>
+          </div>
+        </div>
+        <div class="section skills">
+          <a name="skills"></a>
+          <h1>Skills</h1>
+
+          <div class="content">
+            <h2>Software</h2>
+            <ul class="details">
+              <li>Strong experience with Java (and Android), Python (and Django), HTML/CSS, Javascript (and Closure)</li>
+              <li>Some experience with C/C++, Objective-C (and iOS), PHP, SQL, and Dart</li>
+            </ul>
+
+            <h2>Language</h2>
+            <ul class="details">
+              <li>Native fluency in Mandarin Chinese and English</li>
+            </ul>
+          </div>
+        </div>
+        
+        
+        </div>
+        </div>
+{% endblock %}

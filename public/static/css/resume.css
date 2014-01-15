@@ -1,0 +1,135 @@
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}:focus{outline:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+
+body {
+  color: #484848;
+}
+
+.name-card {
+  text-align: right;
+  float: right;
+}
+
+.page-header > h1 {
+	font-size: 48px;
+	line-height: 1.2em;
+	font-weight: bold;
+}
+
+#resume-header {
+	text-align: center;
+}
+
+#resume-header > h2 {
+	font-size: 2.5em;
+	margin: 0.25em 0 0 0;
+	font-weight: bold;
+}
+
+#resume-header > address {
+	font-style: normal;
+}
+
+h1 {
+  font-size: 1.5em;
+  margin: 0 0 5px;
+  color: #061224;
+  font-weight: bold;
+  clear: left;
+  line-height: 2em;
+}
+
+h1 em {
+    color: #284265;
+    font-style: normal;
+}
+
+h2 {
+    font-size: 1.3em;
+    margin: 0 0 5px;
+    color: #020f1c;
+    font-weight: 500;
+    clear: left;
+    line-height: 1.8em;
+}
+
+h2 em {
+  font-style: normal;
+  font-size: 0.9em;
+  color: #333;
+  margin-left: 12px;
+}
+
+h3 {
+    font-size: 1.2em;
+    margin: 0 0 5px;
+    font-weight: 500;
+    color: #191919;
+    line-height: 1.4em;
+}
+
+h4 {
+    font-size: 1em;
+    margin: 0 0 5px;
+    font-weight: bold;
+    color: #191919;
+}
+
+
+.blue {
+  color: #0087F7;
+}
+
+.red {
+  color: #E3182D;
+}
+
+.yellow {
+  color: #FFDF00;
+}
+
+.green {
+  color: #12A326;
+}
+
+.boxes {
+  display: none;
+}
+
+.sections {
+  clear: both;
+  padding-top: 20px;
+  font-size: 0.9em;
+  color: #000;
+  line-height: 1.3em;
+}
+
+.section {
+  clear: both;
+  margin-bottom: 20px;
+}
+
+.section .content {
+  margin-left: 1em;
+}
+
+p {
+  margin: 10px 0;
+}
+
+ul {
+  text-decoration: none;
+  margin-bottom: 20px;
+}
+
+ul li {
+  margin-bottom: 4px;
+  color: #777;
+}
+
+.details > li {
+  margin-left: 1em;
+}
+
+.details li > div {
+  padding-left: 2em;
+}
